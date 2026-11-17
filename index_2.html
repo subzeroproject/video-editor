@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoàng Ngọc Trung – Video Editor</title>
+<meta name="description" content="Resume and portfolio of a freelance video editor: commercials, short-form and motion graphics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Tactic Sans';font-weight:400 600;font-display:swap;
+  src:local('Tactic Sans'),local('TacticSans-Regular'),url('fonts/TacticSans-Regular.woff2') format('woff2')}
+@font-face{font-family:'Tactic Sans';font-weight:700 900;font-display:swap;
+  src:local('Tactic Sans Bold'),local('TacticSans-Bold'),url('fonts/TacticSans-Bold.woff2') format('woff2')}
+:root{
+  --bg:#0b0608; --panel:#130b0e; --line:#2b1a1f;
+  --text:#f4eef0; --muted:#a8999d;
+  --magenta:#b8344b; --red:#d9455c; --btn2:#0f0e12;
+  --head:'Tactic Sans','Inter',system-ui,sans-serif; --body:'Tactic Sans','Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--body);
+  background-image:radial-gradient(60rem 30rem at 50% -10%,#3a0f19 0,transparent 70%)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--magenta);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* Hero */
+.hero{padding:96px 0 56px}
+.hero h1{font:800 clamp(2.6rem,8vw,6rem)/.98 var(--head);letter-spacing:-.02em;max-width:12ch}
+.hero h1 span{color:transparent;-webkit-text-stroke:1.5px var(--magenta)}
+.hero p{max-width:52ch;color:var(--muted);margin-top:24px;font-size:1.1rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{padding:14px 26px;border-radius:12px;border:1px solid #1f1d24;background:var(--btn2);color:#d9d4dc;text-decoration:none;font-weight:600;transition:.2s}
+.btn.main{background:linear-gradient(180deg,#8f2c3d,#5c1824);border-color:#b24a5d;color:#fff;box-shadow:0 0 28px #8f2c3d55}
+.btn:hover{border-color:#b24a5d}
+
+/* Works */
+h2{font:800 clamp(1.6rem,3vw,2.2rem)/1.1 var(--head);margin:56px 0 20px}
+.grid{display:grid;gap:20px}
+.g16{grid-template-columns:repeat(2,1fr)}
+.g9{grid-template-columns:repeat(4,1fr)}
+.card{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);
+  background:var(--panel);cursor:pointer;padding:0;color:inherit;text-align:left;font:inherit;transition:.25s}
+.card:hover{border-color:var(--magenta);box-shadow:0 0 36px #b8344b44}
+.r16{aspect-ratio:16/9}.r9{aspect-ratio:9/16}
+.card video,.card img,.card .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph{background:linear-gradient(160deg,#4a1220,#12090c 70%);display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;
+  background:linear-gradient(transparent,#000c);pointer-events:none}
+.cap b{display:block;font:700 1rem var(--head)}
+.cap small{color:var(--muted)}
+
+/* CV */
+.cvrow{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cvrow .card{width:min(100%,263px)}
+.cvrow .side{max-width:34ch;color:var(--muted);text-align:center}
+@media (max-width:560px){.cvrow{flex-direction:column}}
+.cvrow .side .btn{display:inline-block;margin-top:14px}
+.card img.top{object-position:top}
+.cv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.box{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:24px}
+.box h3{font:700 1.15rem var(--head);margin-bottom:14px}
+.box ul{list-style:none;padding:0}
+.box li{padding:8px 0;border-top:1px solid var(--line);color:var(--muted)}
+.box li:first-child{border-top:0}
+.box li b{display:block;color:var(--text);font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:1px solid var(--red);color:#f0a0ad;border-radius:10px;padding:4px 14px;font-size:.9rem}
+footer{padding:64px 0 48px;color:var(--muted);text-align:center}
+
+/* Lightbox */
+dialog{border:0;background:transparent;max-width:100vw;max-height:100vh;padding:0;margin:auto;color:inherit}
+dialog::backdrop{background:#000d}
+.lb{position:relative;display:grid;place-items:center;padding:16px}
+.lb video,.lb iframe{max-width:92vw;max-height:86vh;border:0;border-radius:14px;background:#000}
+.lb img{max-width:92vw;max-height:86vh;border-radius:14px}
+.lb iframe.h{width:min(92vw,1100px);aspect-ratio:16/9}
+.lb iframe.v{height:86vh;aspect-ratio:9/16}
+.x{position:absolute;top:0;right:0;border:1px solid var(--line);background:var(--panel);color:var(--text);
+  width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+
+@media (max-width:860px){.g9{grid-template-columns:repeat(2,1fr)}.cv{grid-template-columns:1fr}}
+@media (max-width:560px){.g16{grid-template-columns:1fr}.hero{padding-top:64px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <h1>I'm Trung<span> a video editor</span></h1>
+  <p>My job is to turn your footage into something that works, not just something that looks nice. I focus on hook, structure, pacing, and clarity, the details that keep people watching.</p>
+  <div class="cta">
+    <a class="btn" href="#works">View work</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2 style="text-align:center">About me</h2>
+  <div class="cvrow" id="cv"></div>
+
+  <h2 id="works">Youtube work</h2>
+  <div class="grid g16" id="h"></div>
+
+  <h2>Short-form work</h2>
+  <div class="grid g9" id="v"></div>
+
+  <h2>Profile</h2>
+  <div class="cv">
+    <section class="box">
+      <h3>Experience</h3>
+      <ul>
+        <li><b>Freelance Video Editor</b>2024 – now · Ads, Short-form videos, Talking Head, Sales Video</li>
+      </ul>
+    </section>
+    <section class="box">
+      <h3>Skills &amp; tools</h3>
+      <div class="tags">
+        <span>Premiere Pro</span><span>After Effects</span>
+        <span>Sound design</span><span>Motion graphics</span>
+      </div>
+    </section>
+    <section class="box">
+      <h3>Contact</h3>
+      <ul>
+        <li><b>Email</b><a href="mailto:ban@example.com">hoang.n.trung171@gmail.com</a></li>
+        <li><b>Phone / Zalo</b>0345870666</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>© <span id="y"></span> TrungHN</footer>
+
+<dialog id="dlg"><div class="lb" id="lb"></div></dialog>
+
+<script>
+/* ====== EDIT HERE ======
+   src : path to an mp4 in the repo (e.g. "videos/ad1.mp4")
+   yt  : YouTube video ID (e.g. "dQw4w9WgXcQ"), used instead of src
+   poster: cover image (optional). Leave src and yt empty for a placeholder. */
+const cvImage = "img/cv.jpg";  // your CV as an image
+const horizontal = [
+  {title:"Ancient Greece", tag:"Cinematic trailer", src:"", yt:"", poster:""},
+  {title:"Create A Portfolio", tag:"Product explainer", src:"", yt:"", poster:""},
+];
+const vertical = [
+  {title:"2040", tag:"Short · Concept", src:"", yt:"", poster:""},
+  {title:"Skillset", tag:"Short · Kinetic type", src:"", yt:"", poster:""},
+  {title:"Eye", tag:"Short · Motion", src:"", yt:"", poster:""},
+  {title:"Camera", tag:"Short · Product", src:"", yt:"", poster:""}
+];
+
+const dlg = document.getElementById('dlg'), lb = document.getElementById('lb');
+
+function card(v, ratio){
+  const b = document.createElement('button');
+  b.className = 'card ' + (ratio === 'h' ? 'r16' : 'r9');
+  b.setAttribute('aria-label', 'Watch video ' + v.title);
+  let media;
+  if (v.src){
+    media = `<video muted loop playsinline preload="metadata" ${v.poster?`poster="${v.poster}"`:''} src="${v.src}"></video>`;
+  } else if (v.yt || v.poster){
+    media = `<img loading="lazy" alt="" src="${v.poster || `https://img.youtube.com/vi/${v.yt}/hqdefault.jpg`}">`;
+  } else {
+    media = `<div class="ph">Add your video</div>`;
+  }
+  b.innerHTML = media + `<div class="cap"><b>${v.title}</b><small>${v.tag}</small></div>`;
+  const vid = b.querySelector('video');
+  if (vid){ // hover to preview
+    b.addEventListener('mouseenter', () => vid.play().catch(()=>{}));
+    b.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+  }
+  b.addEventListener('click', () => open(v, ratio));
+  return b;
+}
+
+function open(v, ratio){
+  if (v.img) lb.innerHTML = `<img alt="${v.title}" src="${v.img}">`;
+  else if (v.src) lb.innerHTML = `<video controls autoplay playsinline src="${v.src}"></video>`;
+  else if (v.yt) lb.innerHTML = `<iframe class="${ratio}" allow="autoplay; fullscreen" allowfullscreen src="https://www.youtube.com/embed/${v.yt}?autoplay=1&rel=0"></iframe>`;
+  else return;
+  lb.insertAdjacentHTML('beforeend', '<button class="x" aria-label="Close">✕</button>');
+  lb.querySelector('.x').onclick = () => dlg.close();
+  dlg.showModal();
+}
+dlg.addEventListener('close', () => lb.innerHTML = '');
+dlg.addEventListener('click', e => { if (e.target === dlg || e.target === lb) dlg.close(); });
+
+(function(){
+  const box = document.getElementById('cv');
+  const b = document.createElement('button');
+  b.className = 'card r9';
+  b.setAttribute('aria-label', 'View resume');
+  const img = new Image();
+  img.className = 'top'; img.alt = ''; img.src = cvImage;
+  img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), {className:'ph', textContent:'Add img/cv.jpg'})); };
+  b.append(img);
+  box.append(b);
+})();
+horizontal.forEach(v => document.getElementById('h').append(card(v, 'h')));
+vertical.forEach(v => document.getElementById('v').append(card(v, 'v')));
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
