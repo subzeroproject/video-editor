@@ -196,7 +196,7 @@ dlg.addEventListener('click', e => { if (e.target === dlg || e.target === lb) dl
   b.className = 'card r9';
   b.setAttribute('aria-label', 'View resume');
   const img = new Image();
-  img.className = 'top'; img.alt = ''; img.src = cvImage;
+  img.className = 'top'; img.alt = ''; img.src = 'ava.png';
   img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), {className:'ph', textContent:'Add img/cv.jpg'})); };
   b.append(img);
   box.append(b);
